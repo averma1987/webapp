@@ -38,3 +38,12 @@ resource "azurerm_windows_web_app" "companyappubs" {
     azurerm_service_plan.companyplan
   ]
 }
+
+# Please ensure to use your own GitHub URL
+
+resource "azurerm_app_service_source_control" "appservice_sourcecontrol" {
+  app_id                 = azurerm_windows_web_app.companyappubs.id
+  repo_url               = "https://github.com/alashro/webapp"
+  branch                 = "master"
+  use_manual_integration = true
+}
